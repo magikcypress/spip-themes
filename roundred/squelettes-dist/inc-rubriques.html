@@ -1,0 +1,30 @@
+[(#REM)
+	Barre de navigation, ouverte sur la hierarchie courante
+
+	On fait un plan, et, quand on avance vers une rubrique,
+	on l'affiche si son parent est expose ou est la racine du site. ]
+
+<B_rubriques>
+	<div class='menu rubriques boite_contact2'>
+	<div class='boite_contact_haut2'><div></div></div>
+	
+	<div class='boite_content2'>
+		 
+	<h2 class="invisible"><:rubriques:></h2>	
+	
+	  <ul id="arborescence">
+	    <BOUCLE_rubriques(RUBRIQUES){racine}{par titre}{id_rubrique!=12}>
+	      <li class="toggleSubMenu [(#EXPOSE)]">
+		<a href="#URL_RUBRIQUE" [class="(#EXPOSE)"] [title="(#DESCRIPTIF|textebrut|entites_html)"]> 
+		  [(#TITRE|supprimer_numero)]
+		</a>      	
+	      </li>
+	    </BOUCLE_rubriques>
+	  </ul>
+
+	</div>
+	
+<!-- 	<div class='boite_contact_bas2'><div></div></div> -->
+	
+	</div>		
+</B_rubriques>	

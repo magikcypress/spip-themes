@@ -1,0 +1,68 @@
+[(#REM)
+	Un cache plus court, pour la boucle syndic_articles
+]#CACHE{3600}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+<head>
+<title>[(#NOM_SITE_SPIP|textebrut|supprimer_numero)]</title>
+[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|textebrut)" />]
+<INCLURE{fond=inc-head}>
+</head>
+
+<body class="page_sommaire">
+<div id="page">
+
+	[(#REM) Entete de la page + titre du site ]
+	<INCLURE{fond=inc-entete}>
+
+	[(#REM) Contenu principal : derniers articles publies ]
+	<div class="hfeed" id="conteneur">
+	<div id="contenu">
+		
+		<div class="cartouche invisible">
+			<h1 class="invisible">#NOM_SITE_SPIP</h1>
+		</div>
+		
+		[<div class="chapo">(#DESCRIPTIF_SITE_SPIP)</div>]
+		
+		[(#REM) Derniers articles ]
+		<div class="menu articles">
+		  <INCLURE{fond=modeles/liste_derniers_articles}{env}{ajax} />
+		</div>
+		
+		[(#REM) Sur le Web ]
+		<B_syndic>
+		<div class="menu">
+			<h2><:nouveautes_web:></h2>
+			<ul>
+				<BOUCLE_syndic(SYNDIC_ARTICLES) {age<180} {par date}{inverse} {0,6}>
+				<li>[(#DATE|affdate_jourcourt) &ndash; ]<a href="#URL_ARTICLE"[ title="(#NOM_SITE|attribut_html|couper{80})"] class="spip_out">#TITRE</a></li>
+				</BOUCLE_syndic>
+			</ul>
+		</div>
+		</B_syndic>
+	
+	</div><!--#contenu-->
+	</div><!--#conteneur-->
+	
+	[(#REM) Menu de navigation laterale ]
+	<div id="navigation">
+		
+		[(#REM) Menu de navigation par rubriques ]
+		<INCLURE{fond=inc-rubriques}>	
+		#FORMULAIRE_RECHERCHE
+		
+	<div class='arrondi'><div></div></div>
+	
+	</div><!--#navigation-->
+
+
+	
+</div><!--#page-->
+
+	
+	[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+</div><!--#page-->	
+</body>
+</html>

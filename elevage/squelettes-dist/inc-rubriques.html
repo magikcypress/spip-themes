@@ -1,0 +1,32 @@
+[(#REM)
+	Barre de navigation, ouverte sur la hierarchie courante
+
+	On fait un plan, et, quand on avance vers une rubrique,
+	on l'affiche si son parent est expose ou est la racine du site. ]
+
+<div class='boite_contact_bas'>
+<B_articles>
+<div class="menu articles">
+	<h2 class="invisible"><:articles:></h2>
+	<ul id="effet_menu">
+	<BOUCLE_articles(RUBRIQUES) {racine} {par num titre, titre}>
+		<li>
+			<a href="#URL_RUBRIQUE"[ class="(#EXPOSE)"]>[(#TITRE|supprimer_numero|couper{80})]</a>
+		</li>
+	</BOUCLE_articles>
+
+	</ul>
+</div>
+</B_articles>
+
+[(#REM) Breves ]
+<B_breves>
+<div class="menu">
+	<h2><:dernieres_breves:></h2>
+	<ul>
+		<BOUCLE_breves(BREVES) {par date}{inverse} {0,5}>
+			<li>[(#DATE|affdate_jourcourt) &ndash; ]<a href="#URL_BREVE" class="breve_hover">#TITRE</a></li>
+		</BOUCLE_breves>
+	</ul>
+</div>
+</B_breves>

@@ -1,0 +1,67 @@
+[(#REM)
+	Un cache plus court, pour la boucle syndic_articles
+]#CACHE{3600}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+<head>
+<title>[(#NOM_SITE_SPIP|textebrut|supprimer_numero)]</title>
+[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|textebrut)" />]
+<INCLURE{fond=inc-head}>
+</head>
+
+<body class="page_sommaire">
+<div id="page">
+
+	[(#REM) Entete de la page + titre du site ]
+	<INCLURE{fond=inc-entete}>
+
+	[(#REM) Contenu principal : derniers articles publies ]
+	<div id="conteneur">
+	<div id="contenu">
+
+		<h1>#NOM_SITE_SPIP</h1>
+		
+		[<div class="chapo">(#DESCRIPTIF_SITE_SPIP)</div>]
+
+		[(#REM) Derniers articles ]
+		<div class="menu articles">
+		  <INCLURE{fond=modeles/liste_derniers_articles}{env}{ajax} />
+		</div>
+	
+	</div><!--#contenu-->
+	</div><!--#conteneur-->
+	
+	[(#REM) Menu de navigation laterale ]
+	<div id="navigation">
+		
+		[(#REM) Menu de navigation par rubriques ]
+		<INCLURE{fond=inc-rubriques}>
+
+
+    </div><!--#navigation-->
+    
+    [(#REM) Menu de navigation laterale ]
+    <div id="extra">
+
+        [(#REM) Menu de navigation mots-cles : les autres mots cles du meme groupe ]
+        <B_mots_freres>
+        <div class="menu">
+            #ANCRE_PAGINATION
+            <h2><:mots_clefs:></h2>
+            <ul>
+                <BOUCLE_mots_freres(MOTS) {par titre} {pagination 20}>
+                <li><a href="#URL_MOT"[ class="(#EXPOSE)"]>#TITRE</a></li>
+                </BOUCLE_mots_freres>
+            </ul>
+            [<p class="pagination">(#PAGINATION)</p>]
+        </div>
+        </B_mots_freres>
+        
+    </div>    
+	[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+	
+</div><!--#page-->
+
+</body>
+</html>

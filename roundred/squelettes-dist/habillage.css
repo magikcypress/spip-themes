@@ -1,0 +1,336 @@
+/*
+ * Cette feuille de style est bien entendu soumis 
+ * a certaines restrictions que vous trouvez sur la page des mentions legales de ce site. 
+ * Pour toutes utilisations une demande doit etre effectue depuis nos formulaires de contact.
+ * Il est dans l'interet de tous de ne pas reproduire un design web. 
+ * De plus, il est important pour votre identite visuelle d'avoir
+ * votre propre design.
+ */
+
+/* --------------------------------------------------------- */
+/* Feuille de style des squelettes par defaut pour SPIP 2.0  */
+/* --------------------------------------------------------- */
+
+
+/* ------------------------------------------
+/* Typographie generale (style transversaux)
+/* ------------------------------------------ */
+html { font-size: 100%; } /* Cf.: http://pompage.net/pompe/definir-des-tailles-de-polices-en-CSS/ */
+body { font-size: 0.8125em; font-family: "Luxi sans", "Lucida Grande", Lucida, "Lucida Sans Unicode", sans-serif; color: #333; }
+
+/* Titraille / Intertitres */
+h1,h2,h3,h4,h5,h6 { margin: 0; padding: 0; font-weight: normal; font-size: 1em; font-family: Georgia, Times, serif; }
+h1 { font-size: 1.70em; color: #333; }
+h2 { font-size: 1.60em; font-weight: normal; color: #333; }
+
+h3 { font-size: 1.20em; font-weight: bold; }
+h3.spip {} /* Cf.: spip_style.css */
+hr.spip {} /* Cf.: spip_style.css */
+
+/* Autres enrichissements typo */
+strong { font-weight: bold; }
+em { font-style: italic; }
+abbr, acronym { border-bottom: 1px dotted; cursor: help; }
+small { font-size: 0.90em; color: #666; }
+dfn { font-weight: bold; color: #666; }
+del { text-decoration: line-through; }
+ins { color: red !important; text-decoration: none; }
+sup, sub { font-size: .8em; font-variant: normal; }
+
+/* Listes */
+ul.spip {} /* Cf.: spip_style.css */
+ol.spip {} /* Cf.: spip_style.css */
+dl {}
+dt {}
+dd {}
+
+/* Citations, code et poesie */
+cite {}
+q {}
+blockquote {}
+blockquote.spip {} /* Cf.: spip_style.css */
+blockquote.spip_poesie {} /* Cf.: spip_style.css */
+.spip_code {} /* Cf.: spip_style.css */
+.spip_cadre {} /* Cf.: spip_style.css */
+address {}
+
+/* Tableaux */
+table.spip {} /* Cf.: spip_style.css */
+
+/* Logos, documents et images */
+img { margin: 0; padding: 0; border: 0; }
+.spip_logos {} /* Cf.: spip_style.css */
+.spip_documents {} /* Cf.: spip_style.css */
+.spip_documents_center {} /* Cf.: spip_style.css */
+.spip_documents_left {} /* Cf.: spip_style.css */
+.spip_documents_right {} /* Cf.: spip_style.css */
+.spip_doc_titre {} /* Cf.: spip_style.css */
+.spip_doc_descriptif {} /* Cf.: spip_style.css */
+
+
+/* ------------------------------------------
+/* Disposition a l'ecran des blocs principaux
+/* ------------------------------------------ */
+body { background: #FFF; margin: 0; padding: 0; text-align: center; }
+
+#entete { width: 100%; height: 150px; margin: 0; padding-top: .60em; background: #989ba0; text-align: center; }
+#entete a.accueil { display: block; width: 100%; color: #FFF; text-align: center; }
+#entete a.accueil img.spip_logos { line-height: 1em; }
+#entete a.accueil #nom_site_spip { font-size: 2.2em; font-family: Georgia, Times, serif; font-weight: normal; }
+#entete p { color: #FFF; font-size: 1em; font-weight: bold; margin-bottom: 8em; }
+#entete .formulaire_menu_lang { position: absolute; right: 0; top: 0.90em; display: block; width: 30%; } /*Cf.: spip_formulaires.css*/
+
+#extra { float: right; clear: right; width: 30%; margin-top: 1em; overflow: hidden; }
+
+#pied { clear: both; width: 100%; margin: 0; padding: 0.40em 0; border-top: 1px solid #c14747; text-align: center; font-size: 0.90em; }
+#pied img { vertical-align: middle; }
+
+/* Espaceur de blocs */
+.nettoyeur { clear: both; height: 0; margin: 0; padding: 0; border: 0; line-height: 1px; font-size: 1px; }
+.espace { padding: 10px 0 10px 0; background: transparent; }
+
+/* Non visible a l'ecran */
+.invisible { position: absolute; top: -3000em; height: 1%; }
+
+
+/* ------------------------------------------
+/* Habillage des elements du contenu
+/* ------------------------------------------ */
+
+#hierarchie { clear: both; margin-bottom: 2em; font-size: 0.90em; }
+#hierarchie, #hierarchie a { color: #666; }
+
+.cartouche { margin-bottom: 2em; }
+.cartouche .spip_logos { float: right; margin-left: 16px; margin-bottom: 4px; }
+.cartouche p { margin: 0; padding: 0; clear: left; }
+.surtitre, .soustitre { font-size: 0.90em; color: #666; text-transform: uppercase; letter-spacing: 0.10em; }
+.cartouche .surtitre { margin-bottom: 0.30em; }
+.cartouche .soustitre { margin-top: 0.50em; margin-bottom: 0.30em; }
+.cartouche .traductions { font-size: 0.90em; }
+
+.chapo { margin-bottom: 1.50em; line-height: 1.40em; font-weight: bold; }
+.texte { line-height: 1.60em; }
+.hyperlien { display: block; background: #EEE; padding: 0.50em 1em; font-weight: bold; color: #666; }
+.ps, .notes { margin-bottom: 2em; line-height: 1.40em; }
+.notes { clear: both; font-size: 0.90em; }
+
+abbr.published { border: 0; }
+
+/* Portfolio */
+#documents_portfolio { clear: both; margin: 2em auto; text-align: center; }
+#documents_portfolio .spip_logos { margin: 6px 3px 0 3px; border: 4px solid #DDD; }
+#documents_portfolio a.on .spip_logos { border-color: #F57900; }
+#documents_portfolio a:focus .spip_logos,
+#documents_portfolio a:hover .spip_logos,
+#documents_portfolio a:active .spip_logos { border-color: #8B6F92; }
+
+
+/* Habillage des forums
+---------------------------------------------- */
+.repondre { clear: both; margin-top: 2.50em; margin-right: 1em; text-align: right; font-weight: bold; }
+
+/* Habillage des forums */
+ul.forum { display: block; clear: both; margin: 0; padding: 0; }
+ul.forum, ul.forum ul { list-style: none; }
+.forum-fil { margin-top: 1.50em; }
+.forum-fil ul { display: block; margin: 0; padding: 0; margin-left: 1em; }
+.forum-chapo .forum-titre, .forum-chapo .forum-titre a { display: block; margin: 0; padding: 0; font-weight: bold; color: #FFF; }
+.forum-texte { margin: 0; padding: 0.50em 1em; color: #333; }
+.forum-texte .hyperlien {}
+.forum-texte .repondre { margin: 0; padding: 0.10em 0; text-align: right; }
+
+/* Boite d'un forum : eclaircissement progressif des bords */
+ul .forum-message { border: 1px solid #666; margin: 0; padding: 0; margin-bottom: 1em; }
+ul ul .forum-message { border: 1px solid #A4A4A4; }
+ul ul ul .forum-message { border: 1px solid #B8B8B8; }
+ul ul ul ul .forum-message { border: 1px solid #CCC; }
+ul ul ul ul ul .forum-message { border: 1px solid #E0E0E0; }
+ul ul ul ul ul ul .forum-message { border: 1px dotted #E0E0E0; }
+
+/* Boite de titre d'un forum : mise en couleur selon la profondeur du forum */
+ul .forum-chapo { border: 0; border-bottom: 1px dotted #B8B8B8; margin: 0; padding: 3px 6px 2px 6px; background: #CCCCCC; }
+
+
+/* Habillage des petitions
+---------------------------------------------- */
+#signatures { clear: both; margin: 0 0 2em 0; padding: 0; background: none; }
+#signatures table { width: 100%; margin: 1em 0 0 0; }
+#signatures thead { text-align: center; color: #555; }
+#signatures td { padding: 0.50em; border: 2px solid #FEFEFE; vertical-align: top; }
+#signatures td.signature-date { background: #E4F0F0; text-align: center; white-space: nowrap; }
+#signatures td.signature-nom { background: #ECF4F4; text-align: center; }
+#signatures td.signature-nom small { display: block; }
+#signatures td.signature-message { background: #F4F8F8; }
+#signatures .formulaire_recherche { margin: 1em 0; text-align: right; } /*Cf.: spip_formulaires.css*/
+#signatures .formulaire_recherche input.text { width: 10em; text-align: left; } /*Cf.: spip_formulaires.css*/
+
+
+/* ------------------------------------------
+/* Sous-navigation et autres menus
+/* ------------------------------------------ */
+
+/* Habillage general des menus de navigation */
+#descriptif { text-align: center; font-size: 1.4em; padding: .3em 0 .3em 0; /* border-bottom: solid 1px #c14747; */ }
+.boite { margin: 2em 0 2em 0; text-align: center; }
+
+.boite_srub { 
+  background: #CCCCCC; 
+  margin-bottom: 2em; 
+}
+.boite_contact_global {
+     background: transparent;
+}
+.boite_contact { 
+  background: #CCCCCC; 
+}
+.boite_contact2 { 
+     background: #FFFFFF;
+     margin: 0 10px 0 10px;
+}
+.boite_contact_haut { 
+  background: url(../squelettes-dist/boite_arrondi/ne.gif) no-repeat top right; 
+}
+.boite_contact_haut2 { 
+  background: url(../squelettes-dist/boite_arrondi/ne3.gif) no-repeat top right; 
+}
+.boite_contact_haut3 { 
+  background: url(../squelettes-dist/boite_arrondi/ne4.gif) no-repeat top right; 
+}
+.boite_don_haut { 
+  background: url(../squelettes-dist/boite_arrondi/ne-d.gif) no-repeat top right; 
+}
+.boite_contact_haut div { 
+  font-size: 0;
+  height: 10px; 
+  background: url(../squelettes-dist/boite_arrondi/nw.gif) no-repeat top left; 
+}
+.boite_contact_haut2 div { 
+  font-size: 0;
+  height: 10px; 
+  background: url(../squelettes-dist/boite_arrondi/nw3.gif) no-repeat top left; 
+}
+.boite_contact_haut3 div { 
+  font-size: 0;
+  height: 10px; 
+  width: 100%;  
+  background: url(../squelettes-dist/boite_arrondi/nw4.gif) no-repeat top left; 
+}
+.boite_contact_bas { 
+  background: url(../squelettes-dist/boite_arrondi/se.gif) no-repeat bottom right; 
+}
+.boite_contact_bas2 { 
+  background: url(../squelettes-dist/boite_arrondi/se3.gif) no-repeat bottom right; 
+}
+.boite_contact_bas div { 
+  font-size: 0;
+  height: 10px; 
+  background: url(../squelettes-dist/boite_arrondi/sw.gif) no-repeat bottom left; 
+}
+.boite_contact_bas2 div { 
+  font-size: 0;
+  height: 10px; 
+  background: url(../squelettes-dist/boite_arrondi/sw3.gif) no-repeat bottom left; 
+}
+.boite_content {
+  padding: 0px 10px 0px 10px;
+}
+.boite_content2 {
+  padding: 0px 10px 90px 10px;
+}
+
+
+/* Pagination */
+.pagination { clear: both; text-align: right; font-size: 0.90em; color: #666; }
+.pagination .on { font-weight: bold; color: #666; }
+
+/* Rubriques */
+.rubriques ul { border: 0; padding: 1em; list-style: none; }
+.rubriques li { background: url(../squelettes-dist/puce_square.png) no-repeat 0 0.10em; padding-left: 20px; }
+.rubriques ul li { display: block; border: 0; list-style: none; }
+.boite_content li { display: block;  margin: 1em 0 1em 1em; border: 0; list-style-type: none; }
+.boite_content2 li { margin: .3em 0 .3em 0; border: 0; list-style-type: circle; }
+
+.formulaire_recherche { margin-bottom: 2em; } /*Cf.: spip_formulaires.css*/
+
+/* Listes d'articles et extraits introductifs */
+
+#centrer ul { padding: 0 0 0 1em; list-style: none; }
+#centrer li { background: url(../squelettes-dist/puce_square.png) no-repeat 0 0.50em; padding-left: 20px; }
+#centrer .texte p { padding: 0.50em 0 0.50em 0; }
+.articles ul li { clear: both; padding: 0; list-style: none; }
+.articles ul li h3 { margin: 0.30em 0; }
+.articles .spip_logos { float: right; clear: right; margin: 0 0 4px 16px; }
+.articles ul li .enclosures { float: right; text-align: right; max-width: 60%; margin: 0; }
+.articles ul li .introduction { margin-top: 0.30em; line-height: 1.40em; }
+
+/* Couleurs des liens
+---------------------------------------------- */
+a, a.spip_out { color: #850003; text-decoration: none; }
+a:focus,a:hover,a:active { color: #850003; text-decoration: underline; }
+
+.menuhaut a, #menuleft a { color: #FFF; }
+.boite_benevole a { color: #850003; }
+a.titre_rub { font-size: 1.1em; }
+
+/* expose le chemin de l'article ou rubrique en cours */
+	#arborescence .oui {
+		color: #850003;
+	}s
+	
+	/* par d�faut les puces sont dans le corps des items */
+	#arborescence li {
+		list-style-position: inside;
+		vertical-align : top;		
+	}
+	
+	#arborescence li a {
+		height: 20px;			
+
+
+	}
+	
+	#arborescence li a.on, #arborescence ul.on li.feuille a {
+		font-weight: bold;				
+	}	
+	#arborescence ul.on a {
+		font-weight: normal;				
+	}		
+	
+	/* par defaut les element noeuds (ie d�pli�) */
+	#arborescence .noeud {
+		list-style-image:url(../squelettes-dist/puce_rouge.png);
+	}
+
+	/* lorsque le bloc fils est ferm� */			
+	#arborescence .plier {
+		list-style-image:url(../squelettes-dist/puce_rouge.png);
+	}
+
+	#arborescence .plier > ul {
+		display : none;
+	}
+
+	#arborescence .feuille {
+		background-repeat : repeat-y;			
+		height : 30px;	
+		margin-left: 2.5em;
+		padding-bottom: 1em;
+		line-height: 1em;
+	}
+/* personalisation de l'ancre pour ie */
+	#arborescence a.noeud {
+		/* ramene l'ancre au dessus de la puce */
+		margin-left : -2em;
+		/* formate l'anre � la taille de la puce */
+		width : 20px;
+		height : 20px;
+		text-decoration: none ;
+		background-image:url(../images/tree/invisible.gif);
+	}
+
+	/* �l�ments terminaux, qui ne poss�dent pas de sous partie */				
+	#arborescence .feuille {
+		list-style-image: url(../images/tree/branch.gif);
+		background-repeat : repeat-y;
+		height : 20px;			
+	}	

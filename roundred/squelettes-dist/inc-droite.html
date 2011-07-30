@@ -1,0 +1,45 @@
+[(#REM)
+	Barre de navigation, ouverte sur la hierarchie courante
+
+	On fait un plan, et, quand on avance vers une rubrique,
+	on l'affiche si son parent est expose ou est la racine du site. ]
+
+
+		<div class='boite_contact'>
+		<div class='boite_contact_haut'><div></div></div>
+		<div class='boite_content'>
+		
+		#FORMULAIRE_RECHERCHE
+		
+        [(#REM) Menu de navigation mots-cles : les autres mots cles du meme groupe ]
+        <B_mots_freres>
+        <div class="menu">
+            #ANCRE_PAGINATION
+            <h2><:mots_clefs_meme_groupe:></h2>
+            <ul>
+                <BOUCLE_mots_freres(MOTS) {id_rubrique} {type} {par titre} {pagination 20}>
+                <li><a href="#URL_MOT"[ class="(#EXPOSE)"]>#TITRE</a></li>
+                </BOUCLE_mots_freres>
+            </ul>
+            [<p class="pagination">(#PAGINATION)</p>]
+        </div>
+        </B_mots_freres>
+
+        [(#REM) Menu de navigation mots-cles : les autres groupes avec un lien sur le premier mot du groupe ]
+        <B_groupes_freres>
+        <div class="menu">
+            <h2><:autres_groupes_mots_clefs:></h2>
+            <ul>
+                <BOUCLE_groupes_freres(GROUPES_MOTS) {!id_groupe} {par titre}>
+                <BOUCLE_mot_cousin(MOTS) {id_groupe} {par titre} {0,1}>
+                <li><a href="#URL_MOT">#TYPE</a></li>
+                </BOUCLE_mot_cousin>
+                </BOUCLE_groupes_freres>
+            </ul>
+        </div>
+        </B_groupes_freres>
+        
+        #FORMULAIRE_INSCRIPTION
+		</div>
+		<div class='boite_contact_bas'><div></div></div>	
+	    </div>

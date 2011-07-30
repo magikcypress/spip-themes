@@ -1,0 +1,113 @@
+[(#REM)
+	Un cache plus court, pour la boucle syndic_articles
+]#CACHE{3600}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+<head>
+<title>[(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|textebrut)" />]
+<INCLURE{fond=inc-head}>
+</head>
+
+<body>
+<div id="page">
+
+	[(#REM) Entete de la page + titre du site ]
+	<INCLURE{fond=inc-entete}>
+
+
+	<div id="descriptif">
+		#DESCRIPTIF_SITE_SPIP
+	</div>	
+	<div id="colonne_accueil">
+
+	       
+	<div id="colonne1">
+		<div class='boite_contact_global'>
+		<div class='boite_contact_haut3'><div></div></div>	
+		 
+	        <INCLURE{fond=inc-rubriques}{id_rubrique}>
+			
+	       </div>
+
+	</div>
+	       
+
+		
+	</div>
+	<div id="colonne2">
+			<INCLURE{fond=inc-droite} {id_rubrique}>
+	</div>
+
+	[(#REM) Contenu principal : derniers articles publies ]
+	<div id="centrer">
+		
+		<div class="cartouche invisible">
+			<h1 class="invisible">#NOM_SITE_SPIP</h1>
+		</div>
+		
+		[(#REM) Articles actus]
+		<BOUCLE_actus(RUBRIQUES) {id_rubrique=1} {par date} {inverse}>
+		<h2>[(#TITRE|supprimer_numero|image_typo{police=FreeSans.ttf,taille=18,couleur=850003,largeur=350})]</h2>
+		<div class='boite_srub'>
+		<div class='boite_contact_haut'><div></div></div>
+		<div class='boite_content'>
+		 
+		<B_articles_recents>
+		<div class="articles">
+
+			<ul>
+				<BOUCLE_articles_recents(ARTICLES) {id_rubrique} {par date}{inverse} {0,1}>
+				<li class="hentry">
+					[(#LOGO_ARTICLE_RUBRIQUE|#URL_ARTICLE|image_reduire{150,100})]
+					<h3 class="entry-titre"><a href="#URL_ARTICLE" rel="bookmark">[(#TITRE|image_typo{police=FreeSans.ttf,taille=15,couleur=850003,largeur=350})]</a></h3>
+					<small>Publi&eacute; le : <abbr class="published"[ title="(#DATE|date_iso)"]>[(#DATE|affdate_jourcourt)]</abbr></small>
+					[<div class="#EDIT{intro} introduction entry-content">(#TEXTE|couper{450,&nbsp;(<a href="#URL_ARTICLE">...</a>)})</div>]
+				</li>
+				</BOUCLE_articles_recents>
+			</ul>
+		</div>
+		</B_articles_recents>
+		
+		</div>
+		<div class='boite_contact_bas'><div></div></div>
+	        </div>		
+	       
+		<B_articles_anciens>
+		<div class="articles">
+		
+			<ul>
+				<BOUCLE_articles_anciens(ARTICLES) {id_rubrique} {par date}{inverse} {1,5}>
+				<li class="hentry">
+					[(#LOGO_ARTICLE_RUBRIQUE|#URL_ARTICLE|image_reduire{150,100})]
+					<h3 class="entry-titre"><a href="#URL_ARTICLE" rel="bookmark">[(#TITRE|image_typo{police=FreeSans.ttf,taille=15,couleur=850003,largeur=350})]</a></h3>
+					<small style="vertical-align: middle;">Publi&eacute; le : <abbr class="published"[ title="(#DATE|date_iso)"]>[(#DATE|affdate_jourcourt)]</abbr></small>
+					[<div class="#EDIT{intro} introduction entry-content">(#TEXTE|couper{150,&nbsp;(<a href="#URL_ARTICLE">...</a>)})</div>]
+				</li>
+				</BOUCLE_articles_anciens>
+			</ul>
+		</div>
+		</B_articles_anciens>	
+			
+		</BOUCLE_actus>
+		
+		[(#REM) Breves ]
+		<B_breves>
+		<div class="menu">
+			<h2><:dernieres_breves:></h2>
+			<ul>
+				<BOUCLE_breves(BREVES) {par date}{inverse} {0,5}>
+				<li>[(#DATE|affdate_jourcourt) &ndash; ]<a href="#URL_BREVE">#TITRE</a></li>
+				</BOUCLE_breves>
+			</ul>
+		</div>
+		</B_breves>
+		
+	</div><!--#centre-->
+	
+	[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+	
+</div><!--#enveloppe-->
+</body>
+</html>

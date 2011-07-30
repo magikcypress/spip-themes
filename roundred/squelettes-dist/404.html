@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+<head>
+<title>[(#TITRE|supprimer_numero|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#INTRODUCTION{150}|attribut_html)" />]
+<INCLURE{fond=inc-head}>
+</head>
+
+<body>
+<div id="page">
+
+	[(#REM) Entete de la page + titre du site ]
+	<INCLURE{fond=inc-entete}>
+
+	<div id="menu">
+		<div id="menuleft"><a href="#URL_SITE_SPIP">Accueil</a> / <a href="-Nous-contacter-">Nous contacter</a></div>
+		<INCLURE{fond=inc-menu}>
+	</div>
+	<br class="nettoyeur" />
+	<div id="descriptif">
+		#DESCRIPTIF_SITE_SPIP
+	</div>	
+	<div id="colonne1">
+		<div class='boite_contact_global'>
+		<div class='boite_contact_haut3'><div></div></div>	
+		 
+	        <INCLURE{fond=inc-rubriques}{id_rubrique}>
+		
+		</div>
+		
+	     <div class='boite_don_global'>
+	     <div class='boite_don_haut'><div></div></div>
+
+	     <div class='boite_don'>
+	     
+	     <div class='boite_content'>		
+		<div><a href="-Faire-un-don-">Faire un <span class="don">don</span> ...</a></div>
+		
+	     </div>
+	     
+	     </div>
+	     <div class='boite_don_bas'><div></div></div>
+	     </div>
+		
+	</div>
+	<div id="colonne2">
+		<div class='boite_contact'>
+		<div class='boite_contact_haut'><div></div></div>
+		 <div class='boite_content'>
+			       <BOUCLE_contact2(RUBRIQUES) {id_rubrique=9}>
+			       #TEXTE
+			       <BOUCLE_auteurs_form2(AUTEURS) {id_auteur=1}>
+			       #FORMULAIRE_ECRIRE_ASSO
+			       </BOUCLE_auteurs_form2>
+			       </BOUCLE_contact2>		
+		 </div>
+		<div class='boite_contact_bas'><div></div></div>
+	       </div>	
+		<div class="boite"><a href="-Newsletters-"><img src="../squelettes-dist/lettreinfos.png" alt="Inscrivez vous &agrave; notre lettre d'informations" /></a></div>
+		<div class="boite_benevole"><a href="-Devenez-benevole-"><img src="../squelettes-dist/devenez_benevole.png" alt="Venez participer &agrave; la vie de l'association" /></a></div>
+	</div>
+
+	[(#REM) Contenu principal : derniers articles publies ]
+	<div id="centrer">
+    
+        [(#REM) Fil d'Ariane ]
+        <div id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a> &gt; <strong>La page n'a pas &eacute;t&eacute; trouv&eacute;e</strong></div>
+
+	  <h2><img src="../squelettes-dist/404.png" alt="La page n'a pas &eacute;t&eacute; trouv&eacute;e" /></h2>
+	  
+	  <div class="#EDIT{texte} texte entry-content">
+	  <p>Si vous venez de cliquer sur un lien ou une image depuis une page de ce site, merci de bien vouloir nous signaler la page 
+	  (URL dans la barre de votre navigateur en haut) et le lien incrimin&eacute;s afin de nous aider &agrave; vous apporter un site de la meilleure qualit&eacute; possible.</p>
+	  
+	  <p>Vous pouvez nous signaler l'erreur depuis <a href="#URL_SITE_SPIP/Pour-plus-de-renseignements">notre formulaire de contact</a>.</p>
+	  
+	  <p>Si vous venez de cliquer sur un lien qui ne vient pas de notre site, merci de signaler le problème au responsable de ce site.</p>
+	  
+	  </div>
+	
+	</div><!--#centrer-->
+		
+	[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+
+</div><!--#page-->
+</body>
+</html>
+</BOUCLE_principale>

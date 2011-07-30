@@ -1,0 +1,15 @@
+/*
+ * Cette feuille de style est bien entendu soumis 
+ * a certaines restrictions que vous trouvez sur la page des mentions legales de ce site. 
+ * Pour toutes utilisations une demande doit etre effectue depuis nos formulaires de contact.
+ * Il est dans l'interet de tous de ne pas reproduire un design web. 
+ * De plus, il est important pour votre identite visuelle d'avoir
+ * votre propre design.
+ */
+
+/***************************************/
+/* Déclaration des styles	       */
+/***************************************/
+
+@import url(structure.css);
+@import url(habillage.css);

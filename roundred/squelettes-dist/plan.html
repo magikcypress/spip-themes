@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+<head>
+<title>[(#TITRE|supprimer_numero|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#INTRODUCTION{150}|attribut_html)" />]
+<INCLURE{fond=inc-head}>
+</head>
+
+<body>
+<div id="page">
+
+	[(#REM) Entete de la page + titre du site ]
+	<INCLURE{fond=inc-entete}>
+
+
+	<div id="descriptif">
+		#DESCRIPTIF_SITE_SPIP
+	</div>	
+	<div id="colonne1">
+		<div class='boite_contact_global'>
+		<div class='boite_contact_haut3'><div></div></div>	
+		 
+	        <INCLURE{fond=inc-rubriques}{id_rubrique}>
+		
+		</div>
+		
+	</div>
+	<div id="colonne2">
+				<INCLURE{fond=inc-droite}>
+	</div>
+
+	[(#REM) Contenu principal : derniers articles publies ]
+	<div id="centrer">
+    
+        [(#REM) Fil d'Ariane ]
+        <div id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a> &gt; Plan du site</div>
+
+        <div class="cartouche">
+            <h1><:plan_site:></h1>
+        </div>
+        
+        <BOUCLE_secteurs(RUBRIQUES) {racine} {par titre}>
+        
+        <h2><a href="#URL_RUBRIQUE">[(#TITRE|supprimer_numero|image_typo{police=FreeSans.ttf,taille=18,couleur=850003,largeur=350})]</a></h2>
+        
+        [(#REM) Articles et sous-rubriques ]
+        <B_articles_racine>
+        <h3 class="invisible"><:articles:></h3>
+        <ul>
+            <BOUCLE_articles_racine(ARTICLES) {id_rubrique} {par titre}>
+            <li><a href="#URL_ARTICLE">[(#TITRE|supprimer_numero|image_typo{police=FreeSans.ttf,taille=15,couleur=c14747,largeur=350})]</a></li>
+            </BOUCLE_articles_racine>
+        </ul>
+        </B_articles_racine>
+        
+        <B_rubriques>
+        <ul>
+            <BOUCLE_rubriques(RUBRIQUES) {id_parent} {par titre}>
+            <li>
+                <strong><a href="#URL_RUBRIQUE">[(#TITRE|supprimer_numero|image_typo{police=FreeSans.ttf,taille=15,couleur=c14747,largeur=350})]</a></strong>
+                
+                <B_articles>
+                <ul>
+                    <BOUCLE_articles(ARTICLES) {id_rubrique} {par titre}>
+                    <li><a href="#URL_ARTICLE">[(#TITRE|supprimer_numero|image_typo{police=FreeSans.ttf,taille=15,couleur=c14747,largeur=350})]</a></li>
+                    </BOUCLE_articles>
+                </ul>
+                </B_articles>
+                
+                <BOUCLE_sous_rubriques(BOUCLE_rubriques)></BOUCLE_sous_rubriques>
+            </li>
+            </BOUCLE_rubriques>
+        </ul>
+        </B_rubriques>
+        
+        [(#REM) Breves ]
+        <B_breves>
+        <h3 class="invisible"><:breves:></h3>
+        <ul>
+            <BOUCLE_breves(BREVES) {id_rubrique} {par date}{inverse}>
+            <li><a href="#URL_BREVE">[(#TITRE|supprimer_numero|image_typo{police=FreeSans.ttf,taille=15,couleur=c14747,largeur=350})]</a></li>
+            </BOUCLE_breves>
+        </ul>
+        </B_breves>
+        
+        [(#REM) Sur le Web ]
+        <B_sites>
+        <h3 class="invisible"><:sites_web:></h3>
+        <ul>
+            <BOUCLE_sites(SITES) {id_secteur} {par nom_site}>
+			<li><a href="[(#ID_SYNDIC|generer_url_entite{site,'','',#CONNECT})]">[(#NOM_SITE|supprimer_numero|image_typo{police=FreeSans.ttf,taille=15,couleur=c14747,largeur=350})]</a></li>
+			</BOUCLE_sites>
+        </ul>
+        </B_sites>
+        
+        </BOUCLE_secteurs>   
+
+	
+	</div><!--#centrer-->
+		
+	[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+
+</div><!--#page-->
+</body>
+</html>

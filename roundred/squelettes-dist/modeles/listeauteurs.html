@@ -1,0 +1,18 @@
+[(#REM)
+	Affiche la liste des auteurs d'un article
+][(#REM)
+	Modele pour la balise #LESAUTEURS, dans le cas des auteurs d'un article
+	(pour un article syndique, la balise affiche directement la valeur du champ)
+]
+                <B_auteurs>
+                <div class="auteur ajax">
+                    #ANCRE_PAGINATION
+                    <h2>Liste des &eacute;tudiants</h2>
+                    <ul>
+                        <BOUCLE_auteurs(AUTEURS) {tout} {par nom} {pagination 20}>
+                        <li><a href="#URL_AUTEUR"[ class="(#EXPOSE)"]>[(#NOM|couper{80})]</a></li>
+                        </BOUCLE_auteurs>
+                    </ul>
+                    [<p class="pagination">(#PAGINATION)</p>]
+                </div>
+                </B_auteurs>

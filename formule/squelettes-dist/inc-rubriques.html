@@ -1,0 +1,20 @@
+[(#REM)
+	Barre de navigation, ouverte sur la hierarchie courante
+
+	On fait un plan, et, quand on avance vers une rubrique,
+	on l'affiche si son parent est expose ou est la racine du site. ]
+
+#FORMULAIRE_RECHERCHE
+
+<B_rubriques>
+<div class="menu rubriques">
+	<ul>
+	<BOUCLE_rubriques(RUBRIQUES) {racine} {par num titre}>
+		<li>
+			<a href="#URL_RUBRIQUE"[ class="(#EXPOSE)"]>[(#TITRE|supprimer_numero)]</a>
+		</li>
+	</BOUCLE_rubriques>
+
+	</ul>
+</div>
+</B_rubriques>

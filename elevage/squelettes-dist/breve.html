@@ -1,0 +1,61 @@
+<BOUCLE_principale(BREVES) {id_breve}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+<head>
+<title>[(#TITRE|textebrut) - ][(#NOM_SITE_SPIP|textebrut)] &agrave; Lonlay le Tesson</title>
+[<meta name="description" content="(#INTRODUCTION{150}|attribut_html)" />]
+<INCLURE{fond=inc-head}>
+[(#REM) Lien vers le flux RSS des breves ]
+<link rel="alternate" type="application/rss+xml" title="<:dernieres_breves:>" href="#URL_PAGE{backend-breves}" />
+</head>
+
+<body class="page_article">
+<div id="page">
+
+	[(#REM) Entete de la page + titre du site ]
+	<INCLURE{fond=inc-entete}>
+
+	[(#REM) Contenu : corps de la breve ]
+    <div id="conteneur">
+    <div id="contenu">
+
+        [(#REM) Fil d'Ariane ]
+        <div id="hierarchie"><a href="#URL_SITE_SPIP/" ><:accueil_site:></a>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]</div>
+
+        <div class="cartouche">
+            [(#LOGO_BREVE||image_reduire{200,200})]
+            <h1 class="#EDIT{titre}">#TITRE</h1>
+            <p><small><abbr class="published" title="[(#DATE|date_iso)]">[(#DATE|nom_jour) ][(#DATE|affdate)]</abbr></small></p>
+        </div>
+        
+        [<div class="#EDIT{texte} texte">(#TEXTE)</div>]
+        [<p class="lien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="lien_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+        [<div class="notes"><h2><:info_notes:></h2>(#NOTES)</div>]
+        
+        [(#REM) Forum de la breve
+        NB : pour desactiver les forums de breve, supprimez simplement les lignes ci-dessous ]
+        <a href="#forum" name="forum" id="forum"></a>
+        <INCLURE{fond=inc-forum}{id_breve}>
+        [<p class="repondre"><a href="(#PARAMETRES_FORUM|url_reponse_forum)" rel="noindex nofollow"><:repondre_breve:></a></p>]
+
+	</div><!--#contenu-->
+	</div><!--#conteneur-->
+
+    [(#REM) Menu de navigation laterale ]
+    <div id="navigation">
+
+        [(#REM) Menu de navigation par rubriques ]
+        <INCLURE{fond=inc-rubriques}>
+
+    <div class='arrondie'><div></div></div>	
+    </div><!--#navigation-->
+
+
+</div><!--#page-->
+
+
+	[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+</body>
+</html>
+</BOUCLE_principale>

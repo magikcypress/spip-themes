@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+<head>
+<title>[(#TITRE|textebrut|supprimer_numero) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#INTRODUCTION{150}|attribut_html)" />]
+<INCLURE{fond=inc-head}>
+</head>
+
+<body>
+<div class="container">
+
+	[(#REM) Entete de la page + titre du site ]
+	<INCLURE{fond=inc-entete}>
+
+	[(#REM) Contenu principal : contenu de l'article ]
+    <div class="span-24">
+
+        [(#REM) Fil d'Ariane ]
+        <div id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a><BOUCLE_ariane(HIERARCHIE){id_article}> &gt; <a href="#URL_RUBRIQUE">[(#TITRE|supprimer_numero|couper{80})]</a></BOUCLE_ariane>[ &gt; <strong class="on">(#TITRE|supprimer_numero|couper{80})</strong>]</div>
+
+        <div class="span-11 hauteur">
+                <h2>Web conf&eacute;rence priv&eacute;</h2>
+                <div class="listes ajax">
+                    #FORMULAIRE_BIGBLUEBUTTON_ABONNEMENT_GROUPS
+                </div>
+        </div>
+
+        <div class="span-12 hauteur">
+                [(#REM) Auteurs ]
+                <INCLURE{fond=modeles/listeauteurs}{env}{ajax} />
+        </div>
+
+        <hr />
+
+        <div class="span-11 hauteur">
+        	[(#REM) WebConf ]
+                <h2>Web conf&eacute;rence publique</h2>
+                <div class="listes ajax">
+                    #FORMULAIRE_BIGBLUEBUTTON_ABONNEMENT_DEMO
+                </div>
+        </div>
+
+        <div class="span-12 hauteur">
+                [(#REM) Website ]
+                <h2>Website</h2>
+                <img src="squelettes-dist/screenshot.png" alt="Copie d'&eacute;cran du site de formation" />
+                <br />
+        </div>
+
+        <hr />
+
+        <div class="span-11 hauteur">
+                [(#REM) LW ]
+                <h2>LegeardWeb</h2>
+                <p><strong>LegeardWeb</strong> est sp&eacute;cialis&eacute; dans la <strong>mise en place de solution pour le web</strong>. Nous pouvons <a href="http://www.legeardweb.com/Infogerance-serveur-sur-devis" class='spip_in'>administrer vos serveurs web</a>, r&eacute;aliser et <a href="http://www.legeardweb.com/Site-web-et-gestion-de-contenu" class='spip_in'>maintenir votre site internet</a>, vous conseiller dans le <a href="http://www.legeardweb.com/-Hebergement-" class='spip_in'>filtrage des virus et spam pour vos boites emails</a> ou mettre en place une application de <a href="http://www.legeardweb.com/OpenERP" class='spip_in'>sauvegarde s&eacute;curis&eacute;e de vos documents</a>. Nous <strong>accompagnons nos clients</strong> dans la conduite de leur projet web. Pour cela nous avons choisi d&#8217;utiliser des logiciels libres qui assurent <strong>p&eacute;r&eacute;nnit&eacute;s et s&eacute;curit&eacute;s de vos donn&eacute;es</strong>.</p>
+        </div>
+
+        <div class="span-12 hauteur last">
+                [(#REM) BBB ]
+                <h2>BigBlueButton</h2>
+                <p><img src="squelettes-dist/logo_bbb.png" alt="Logo BigBlueButton" style="vertical-align: top" /><strong>BigBlueButton</strong> est un projet open source active qui met l'accent sur la convivialit&eacute;, la modularit&eacute; et design &eacute;pur&eacute; - &agrave; la fois pour l'utilisateur et le d&eacute;veloppeur. Le projet est h&eacute;berg&eacute; sur <a href="http://code.google.com/">Google Code</a></p>
+                <p>BigBlueButton est construit en combinant <a href="http://bigbluebutton.org/components">plus de quatorze composants open source</a>.
+                <p><a href="http://bigbluebutton.org/overview">Plus d'informations sur Bigbluebutton</a></p>
+        </div>
+
+	</div><!--.span-24-->
+
+	[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+
+</div><!--#page-->
+</body>
+</html>

@@ -1,0 +1,25 @@
+		[(#REM) Derniers articles ]
+		<B_articles_suivant>
+		<div class="span-15 last">
+			[(#ANCRE_PAGINATION)]
+			<h3><:meme_rubrique:></h3>
+			<ul>
+				<BOUCLE_articles_suivant(ARTICLES) {id_rubrique} {par date}{inverse} {pagination 7}>
+
+				<li class="hentry">
+                <small><abbr class="published"[ title="(#DATE|date_iso)"]>[(#DATE|affdate_jourcourt)]</abbr>[, <:par_auteur:> (#LESAUTEURS)]</small>
+				<h4 class="entry-title"><a href="#URL_ARTICLE" rel="bookmark">#TITRE</a></h4>				
+				
+                     <ul><li>Tags : </li>
+                        <BOUCLE_mots_art(MOTS){id_article} {0,3}>
+                            <li><a href="#URL_MOT"[ title="(#URL_MOT|attribut_html|couper{80})"]>#TITRE</a></li>
+                        </BOUCLE_mots_art>
+                     </ul>
+
+				</li>
+
+				</BOUCLE_articles_suivant>
+			</ul>
+			[<p class="pagination">(#PAGINATION)</p>]
+		</div>
+		</B_articles_suivant>

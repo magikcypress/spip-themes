@@ -1,0 +1,145 @@
+<BOUCLE_principale(ARTICLES) {id_article}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+<head>
+<title>[(#TITRE|supprimer_numero|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#INTRODUCTION{150}|attribut_html)" />]
+<INCLURE{fond=inc-head}>
+</head>
+
+<body>
+<div id="page">
+
+	[(#REM) Entete de la page + titre du site ]
+	<INCLURE{fond=inc-entete}>
+
+
+	<div id="descriptif">
+		#DESCRIPTIF_SITE_SPIP
+	</div>	
+	<div id="colonne1">
+		<div class='boite_contact_global'>
+		<div class='boite_contact_haut3'><div></div></div>	
+		 
+	        <INCLURE{fond=inc-rubriques}{id_rubrique}>
+		
+		</div>
+
+		
+	</div>
+	<div id="colonne2">
+			<B_meme_rubrique>
+		<h2><img src="squelettes-dist/articles_memerubrique.png" alt="Articles de la m&ecirc;me rubrique" /></h2>	
+		<div class='boite_srub'>
+		<div class='boite_contact_haut'><div></div></div>
+		 <div class='boite_content'>
+		 
+		 <ul>
+		     <BOUCLE_meme_rubrique(ARTICLES) {id_rubrique} {par date} {inverse} {exclus}>
+		     <li>
+			 <a href="#URL_ARTICLE">[(#TITRE)]</a><br />
+			 <small>Publi&eacute; le : <abbr class="published"[ title="(#DATE|date_iso)"]>[(#DATE|affdate)]</abbr></small>
+		     </li>
+		     </BOUCLE_meme_rubrique>
+		 </ul>
+		 </div>
+		<div class='boite_contact_bas'><div></div></div>
+	       </div>	
+
+		<B_secteur>
+		<h2><img src="squelettes-dist/sous-rubriques.png" alt="Sous-rubriques" /></h2>
+                <div class='boite_srub'>
+                <div class='boite_contact_haut'><div></div></div>
+                 <div class='boite_content'>
+
+                 <ul>
+                     <BOUCLE_secteur(RUBRIQUES) {id_secteur} {exclus}>
+                     <li>
+                         <a href="#URL_RUBRIQUE">[(#TITRE|supprimer_numero)]</a><br />
+                     </li>
+                     </BOUCLE_secteur>
+                 </ul>
+                 </div>
+                <div class='boite_contact_bas'><div></div></div>
+               </div>
+		</B_secteur>
+
+
+	 </B_meme_rubrique>		
+		<div class='boite_contact'>
+		<div class='boite_contact_haut'><div></div></div>
+		 <div class='boite_content'>
+			       <BOUCLE_contact2(RUBRIQUES) {id_rubrique=9}>
+			       #TEXTE
+			       <BOUCLE_auteurs_form2(AUTEURS) {id_auteur=1}>
+			       #FORMULAIRE_ECRIRE_ASSO
+			       </BOUCLE_auteurs_form2>
+			       </BOUCLE_contact2>		
+		 </div>
+		<div class='boite_contact_bas'><div></div></div>
+	       </div>	
+		<BOUCLE_newsliste(ARTICLES) {id_article=20}>
+		<div class="boite"><a href="-Newsletters-"><img src="../squelettes-dist/lettreinfos.png" alt="Inscrivez vous &agrave; notre lettre d'informations" /></a></div>
+		</BOUCLE_newsliste>
+		<!--div class="boite_benevole"><a href="-Devenez-benevole-"><img src="../squelettes-dist/devenez_benevole.png" alt="Venez participer &agrave; la vie de l'association" /></a></div-->
+		 <//B_meme_rubrique>
+	</div>
+
+	[(#REM) Contenu principal : derniers articles publies ]
+	<div id="centrer">
+    
+        [(#REM) Fil d'Ariane ]
+        <div id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a><BOUCLE_ariane(HIERARCHIE){id_article}> &gt; <a href="#URL_RUBRIQUE">[(#TITRE|supprimer_numero|couper{80})]</a></BOUCLE_ariane>[ &gt; <strong class="on">(#TITRE|supprimer_numero|couper{80})</strong>]</div>
+
+        <div class="cartouche">
+            <div class="surlignable">
+				[(#LOGO_ARTICLE||image_reduire{200,200})]
+				[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
+				<h1 class="#EDIT{titre} entry-titre">[(#TITRE|image_typo{police=FreeSans.ttf,taille=15,couleur=850003,largeur=350})]</h1>
+				[<p class="#EDIT{soustitre} soustitre">(#SOUSTITRE)</p>]
+            </div>
+
+            [(#REM) Inclure le modele des liens de traductions ]
+            #MODELE{article_traductions}
+        </div>
+		
+        <div class="surlignable">
+			[<div class="#EDIT{chapo} chapo">(#CHAPO|image_reduire{500,0})</div>]
+			[<div class="#EDIT{texte} texte entry-content">(#TEXTE|image_reduire{500,0})</div>]
+		</div>
+
+
+		[<p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+        
+		[<div class="ps surlignable"><h2 class="pas_surlignable"><:info_ps:></h2><div class="#EDIT{ps}">(#PS|image_reduire{500,0})</div></div>]
+
+
+
+		[(#REM) Gestion du portfolio et des documents
+			Le critere {env} permet de passer d'autres arguments de la page
+			par exemple l'id_document choisi pour un affichage complet
+		]
+		[(#INCLURE{fond=inc-documents}{id_article}{env})]
+
+
+		[(#REM) Petition :
+		La petition ayant une PAGINATION il faut absolument {env}
+		et pourquoi pas ajax
+		][(#PETITION|?{' '})<INCLURE{fond=inc-petition}{id_article}{env}{ajax}>]
+
+        [<div class="notes surlignable"><h2 class="pas_surlignable"><:info_notes:></h2>(#NOTES)</div>]
+        
+			[(#REM) Forum de l'article ]
+		<a href="#forum" name="forum" id="forum"></a>
+		<INCLURE{fond=inc-forum}{id_article} />
+		[<p class="repondre"><a href="(#PARAMETRES_FORUM|url_reponse_forum)" rel="noindex nofollow"><:repondre_article:></a></p>]
+	
+	</div><!--#centrer-->
+		
+	[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+
+</div><!--#page-->
+</body>
+</html>
+</BOUCLE_principale>

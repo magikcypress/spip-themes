@@ -1,0 +1,12 @@
+        <B_articles>
+            #ANCRE_PAGINATION
+            <h3><:articles:></h3>
+            <ul>
+                <BOUCLE_articles(ARTICLES) {id_mot} {par popularite}{inverse} {pagination 10}>
+                <li>
+                <small>[(#DATE|affdate_jourcourt)][, <:par_auteur:> (#LESAUTEURS)]</small>
+                <h4><a href="#URL_ARTICLE">#TITRE</a></h4></li>
+                </BOUCLE_articles>
+            </ul>
+            [<p class="pagination">(#PAGINATION)</p>]
+        </B_articles>

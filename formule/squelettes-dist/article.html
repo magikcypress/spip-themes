@@ -1,0 +1,95 @@
+<BOUCLE_principale(ARTICLES) {id_article}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+<head>
+<title>[(#TITRE|textebrut|supprimer_numero) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#INTRODUCTION{150}|attribut_html)" />]
+<INCLURE{fond=inc-head}>
+</head>
+
+<body class="page_article">
+<div id="page">
+
+	[(#REM) Entete de la page + titre du site ]
+	<INCLURE{fond=inc-entete}>
+
+	[(#REM) Contenu principal : contenu de l'article ]
+    <div class="hfeed" id="conteneur">
+    <div id="contenu">
+    
+	<h1><a href="#URL_SITE_SPIP">#NOM_SITE_SPIP</a></h1>   
+    
+        [(#REM) Fil d'Ariane ]
+        <div id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a>[ &gt; <strong class="on">(#TITRE|couper{80}|supprimer_numero)</strong>]</div>
+
+        <div class="menu articles">
+   
+				[(#LOGO_ARTICLE||image_reduire{200,200})]
+				[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
+				<h2 class="#EDIT{titre} entry-titre">[(#TITRE|supprimer_numero|image_typo{police=BouCollege.ttf,taille=20,couleur=ebd207,largeur=250})]</h2>
+                     <ul><li>Tags : </li>
+                        <BOUCLE_mots_art(MOTS){id_article} {0,3}>
+                            <li><a href="#URL_MOT"[ title="(#URL_MOT|attribut_html|couper{80})"]>#TITRE</a></li>
+                        </BOUCLE_mots_art>
+                     </ul>				
+				[<p class="#EDIT{soustitre} soustitre">(#SOUSTITRE)</p>]
+
+			[<div class="#EDIT{chapo} chapo">(#CHAPO|image_reduire{500,0})</div>]
+			[<div class="#EDIT{texte} texte entry-content">(#TEXTE|image_reduire{500,0})</div>]
+
+		[<p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+        
+		[<div class="ps surlignable"><h3 class="pas_surlignable"><:info_ps:></h3><div class="#EDIT{ps}">(#PS|image_reduire{500,0})</div></div>]
+
+        [<div class="notes surlignable"><h3 class="pas_surlignable"><:info_notes:></h3>(#NOTES)</div>] 
+	
+		<small><abbr class="published"[ title="(#DATE|date_iso)"]>[(#DATE|affdate_jourcourt)]</abbr>[, <:par_auteur:> (#LESAUTEURS)]</small>
+	</div> <!-- menu articles -->
+	
+		[(#REM) Gestion du portfolio et des documents
+			Le critere {env} permet de passer d'autres arguments de la page
+			par exemple l'id_document choisi pour un affichage complet
+		]
+		[(#INCLURE{fond=inc-documents}{id_article}{env})]
+
+
+        [<div class="notes surlignable"><h3 class="pas_surlignable"><:info_notes:></h3>(#NOTES)</div>]
+
+		[(#REM) Forum de l'article ]
+		<a href="#forum" name="forum" id="forum"></a>
+		<INCLURE{fond=inc-forum}{id_article} />
+		[<p class="repondre"><a href="(#PARAMETRES_FORUM|url_reponse_forum)" rel="noindex nofollow"><:repondre_article:></a></p>]
+	
+	
+	<div class="menu articles"> 
+		[(#REM) Petition :
+		La petition ayant une PAGINATION il faut absolument {env}
+		et pourquoi pas ajax
+		][(#PETITION|?{' '})<h3><:signatures_petition:></h3><INCLURE{fond=inc-petition}{id_article}{env}{ajax}>]  	
+		
+	</div>
+	        
+    <div class="menu articles">        
+		  <INCLURE{fond=modeles/liste_articles_suivant}{env}{ajax}{id_rubrique} />       
+	</div> <!-- menu articles -->
+		
+	</div><!--#contenu-->
+	</div><!--#conteneur-->
+
+
+    [(#REM) Menu de navigation laterale ]
+    <div id="navigation">
+
+        [(#REM) Menu de navigation par rubriques ]
+        <INCLURE{fond=inc-rubriques}{id_rubrique}{id_article}>
+              
+
+    </div><!--#navigation-->
+
+	[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+
+</div><!--#page-->
+</body>
+</html>
+</BOUCLE_principale>

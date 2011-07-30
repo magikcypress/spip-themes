@@ -1,0 +1,81 @@
+/*
+ * Cette feuille de style est bien entendu soumis 
+ * a certaines restrictions que vous trouvez sur la page des mentions legales de ce site. 
+ * Pour toutes utilisations une demande doit etre effectue depuis nos formulaires de contact.
+ * Il est dans l'interet de tous de ne pas reproduire un design web. 
+ * De plus, il est important pour votre identite visuelle d'avoir
+ * votre propre design.
+ */
+
+/***************************************/
+/* Structure		               */
+/***************************************/
+
+* {
+	margin:0;
+	padding:0;
+}
+
+div#page {
+	width: 78.73em;
+	margin: 0 auto 0 auto;
+	text-align: left;
+	position: relative;
+	background: #fff; 
+/* 	border: solid 1px red; */
+	/* background: url(../squelettes-dist/fond.png) top right no-repeat; */
+}
+
+div#menuleft {
+	float: left;
+	width: 32%;
+	font-size: 1.6em;
+	padding: .5em;
+/* 	border: solid 1px black; */
+	background: #CCC url(../squelettes-dist/arrondi_haut.png) bottom right no-repeat;
+}
+div#colonne_accueil {
+	float: left;
+	width: 220px;
+	margin-right: 10px;
+	margin-bottom: 3px;
+}
+div#colonne1 {
+	float: left;
+	width: 220px;
+	margin-top: 20px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+/* 	padding: 0 5px 10px 5px; */
+/* 	border-right: solid 1px #c14747;
+	border-left: solid 1px #c14747; */
+	background: #FFF url(../squelettes-dist/fondfond_menu.png) repeat-x;
+}
+div#colonne2 {
+	float: right;
+	width: 300px;
+	margin-left: 10px;
+	padding: 12px 0;	
+}
+div#centrer {
+	width: 440px !important;
+	width: 410px;
+	/*margin-left: 230px;*/
+	margin-right: 310px !important;
+	margin-right: 240px; 
+	padding: 10px 15px;
+	*padding: 10px 10px; /* Hack IE7 */
+	overflow: hidden;
+ 	/* border: solid 1px blue; */ 
+}
+
+/* Hack IE8 */
+
+/*\*//*/div#centrer {
+	padding: 5px 5px;
+}/* */
+
+div#pied {
+/* 	border: solid 1px blue; */
+}
+

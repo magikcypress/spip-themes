@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+<head>
+<title><:plan_site:> - [(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|attribut_html)" />]
+<INCLURE{fond=inc-head}>
+<meta name="robots" content="none" />
+</head>
+
+<body>
+<div class="container">
+	
+	[(#REM) Entete de la page + titre du site ]
+	<INCLURE{fond=inc-entete}>
+	
+	[(#REM) Le plan de site ci-dessous est a adapter selon les besoins. En particulier, on n'aura pas necessairement besoin de tous les elements (sous-rubriques, articles, breves et sites) ]
+    <div class="span-16 colborder">
+        
+        [(#REM) Fil d'Ariane ]
+        <div id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a> &gt; <strong class="on"><:plan_site:></strong></div>
+    
+        <div class="cartouche">
+            <h2><:plan_site:></h2>
+        </div>
+        
+        <BOUCLE_secteurs(RUBRIQUES) {racine} {par titre}>
+        
+        <h3><a href="#URL_RUBRIQUE">[(#TITRE|supprimer_numero)]</a></h3>
+        
+        [(#REM) Articles et sous-rubriques ]
+        <B_articles_racine>
+        <h4><:articles:></h4>
+        <ul>
+            <BOUCLE_articles_racine(ARTICLES) {id_rubrique} {par titre}>
+            <li><a href="#URL_ARTICLE">[(#TITRE|supprimer_numero)]</a></li>
+            </BOUCLE_articles_racine>
+        </ul>
+        </B_articles_racine>
+        
+        <B_rubriques>
+        <ul>
+            <BOUCLE_rubriques(RUBRIQUES) {id_parent} {par titre}>
+            <li>
+                <strong><a href="#URL_RUBRIQUE">[(#TITRE|supprimer_numero)]</a></strong>
+                
+                <B_articles>
+                <ul>
+                    <BOUCLE_articles(ARTICLES) {id_rubrique} {par titre}>
+                    <li><a href="#URL_ARTICLE">[(#TITRE|supprimer_numero)]</a></li>
+                    </BOUCLE_articles>
+                </ul>
+                </B_articles>
+                
+                <BOUCLE_sous_rubriques(BOUCLE_rubriques)></BOUCLE_sous_rubriques>
+            </li>
+            </BOUCLE_rubriques>
+        </ul>
+        </B_rubriques>
+        
+        [(#REM) Breves ]
+        <B_breves>
+        <h4><:breves:></h4>
+        <ul>
+            <BOUCLE_breves(BREVES) {id_rubrique} {par date}{inverse}>
+            <li><a href="#URL_BREVE">#TITRE</a></li>
+            </BOUCLE_breves>
+        </ul>
+        </B_breves>
+        
+        [(#REM) Sur le Web ]
+        <B_sites>
+        <h4><:sites_web:></h4>
+        <ul>
+            <BOUCLE_sites(SITES) {id_secteur} {par nom_site}>
+			<li><a href="[(#ID_SYNDIC|generer_url_entite{site,'','',#CONNECT})]">#NOM_SITE</a></li>
+			</BOUCLE_sites>
+        </ul>
+        </B_sites>
+        
+        </BOUCLE_secteurs>
+
+	</div><!--#contenu-->
+
+    [(#REM) Menu de navigation laterale ]
+    <div class="span-7 last">
+
+        [(#REM) Menu de navigation par rubriques ]
+        <INCLURE{fond=inc-rubriques}>
+		
+		#FORMULAIRE_RECHERCHE
+	
+	[(#REM) Menu de navigation laterale ]
+	<div id="extra">
+	&nbsp;
+	</div><!--#extra-->
+
+    </div><!--.span-8-->
+
+	[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+
+</div><!--#page-->
+</body>
+</html>
