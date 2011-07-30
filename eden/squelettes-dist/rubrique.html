@@ -1,0 +1,77 @@
+#CACHE{86400}
+<BOUCLE_rubrique_principal(RUBRIQUES) {id_rubrique}>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="#LANG_DIR" lang="#LANG">
+<head>
+<title>[(#SOUSTITRE|textebrut|supprimer_numero) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#INTRODUCTION|couper{150}|textebrut)" />]
+<INCLURE{fond=inc-head}>
+</head>
+
+<body>
+
+<div id="enveloppe">
+
+<div id="evitement">
+	<a href="#navigateur" title="Aller au contenu" accesskey="S"  class="invisible">Aller au contenu</a>
+</div>		
+
+	[(#REM) Entete de la page + titre du site ]
+	<INCLURE{fond=inc-entete}>
+
+<div id="contenu_article">
+
+<div class="contenu">
+    
+        [(#REM) Fil d'Ariane ]
+        <div id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a><BOUCLE_ariane(HIERARCHIE){id_rubrique}> &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80}|supprimer_numero)]</a></BOUCLE_ariane>[ &gt; <strong class="on">(#TITRE|couper{80}|supprimer_numero)</strong>]</div>
+
+                        <div class="cartouche">
+                                [(#LOGO_RUBRIQUE||image_reduire{200,200})]
+                                <h1 class="#EDIT{titre} titre">[(#TITRE|supprimer_numero)]</h1>
+                                [<p><small><:dernier_ajout:> : (#DATE|affdate_jourcourt).</small></p>]
+                        </div>
+
+                        [<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+
+                        <br class="nettoyeur" />
+
+                                [(#REM) Articles de la rubrique ]
+                                <B_articles>
+                                        <h2 class="invisible"><:articles_rubrique:></h2>
+                                        <ul>
+                                                <BOUCLE_articles(ARTICLES) {id_rubrique} {par date}{inverse}>
+                                                <li>
+                                                        <h3 style="padding-bottom: .5em;"><a href="#URL_ARTICLE">#TITRE</a></h3>
+                                                        <div style="padding-bottom: 1em;"><small>[(#DATE|affdate_jourcourt)][, <:par_auteur:> (#LESAUTEURS)]</small></div>
+                                                        <p>#INTRODUCTION</p>
+                                                        <hr />
+                                                        <br class="nettoyeur" />
+                                                </li>
+                                                </BOUCLE_articles>
+                                        </ul>
+                                </B_articles>
+</div>
+
+</div> <!-- contenu_article -->
+
+<div id="menu">
+	
+	<ul>
+	<BOUCLE_lien(RUBRIQUES) {racine} {par num titre} >
+	<li class="deco_menu"><a href="#URL_RUBRIQUE" title="[(#TITRE|supprimer_numero)]"[ class="(#EXPLOSE)"]>[(#TITRE|supprimer_numero)]</a></li>
+	</BOUCLE_lien>
+	</ul>
+
+</div> <!-- menu -->
+
+
+	[(#REM) Pied de la page ]
+	<INCLURE{fond=inc-pied}>
+
+</div> <!-- enveloppe -->
+
+
+</body>
+</html>
+</BOUCLE_rubrique_principal>

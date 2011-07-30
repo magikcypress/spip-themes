@@ -1,0 +1,34 @@
+[(#REM) Signer la petition ]
+#FORMULAIRE_SIGNATURE
+
+[(#REM) Signatures de la petition ]
+<B_signatures>
+<div id="signatures">
+
+	#ANCRE_PAGINATION
+
+	<table summary="<:signatures_petition:>">
+	<caption><h2>#GRAND_TOTAL <:signatures_petition:></h2></caption>
+	<thead>
+		<tr>
+		<th scope="col"><:date:></th>
+		<th scope="col"><:nom:></th>
+		<th scope="col"><:message:></th>
+		</tr>
+	</thead>
+	<tbody>
+<BOUCLE_signatures(SIGNATURES) {id_article} {par date}{inverse} {pagination 15}>
+		<tr>
+		<td class="signature-date">[(#DATE|affdate_jourcourt)]</td>
+		<td class="signature-nom"><div class="#EDIT{qui}">#NOM</div>[
+		<div class="#EDIT{hyperlien}"><a href="(#URL_SITE)" class="spip_out" style="font-size:small;">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></div>]</td>
+		[<td class="signature-message"><div class="#EDIT{message}">(#MESSAGE|PtoBR)</div></td>]
+		</tr>
+</BOUCLE_signatures>
+	</tbody>
+	</table>
+
+	[<p class="pagination">(#PAGINATION)</p>]
+
+</div>
+</B_signatures>

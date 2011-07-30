@@ -1,0 +1,479 @@
+/*  ----------------------------------------------------------- */
+/*  Feuilles de styles des squelettes par defaut pour SPIP 1.9  */
+/*  ----------------------------------------------------------- */
+
+/* taille typo
+ * Base				100%
+ * -------------------------------------
+ * 20px				1.27em
+ * 19px				1.21em
+ * 18px				1.15em
+ * 17px				1.09em
+ * 16px				1.03em
+ * 15px				0.96em
+ * 14px				0.88em
+ * 13px				0.82em
+ * 12px				0.77em
+ * 11px				0.71em
+ * 10px				0.65em
+ *  9px				0.59em
+ * Attention : en dessous de 0.71em le texte devient illisible en text smallest sur MSIE
+ */
+
+/*  ------------------------------------------
+/*  Correction des styles HTML par defaut
+/*  ------------------------------------------ */
+body {
+	background: #FFF;
+	margin: 1.5em;
+	font-size: 1em;
+	color: #333;
+}
+
+img, table { margin: 0; padding: 0; border: none; }
+h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; font-size: 1em; font-weight: normal; }
+h2 { font-size: 150%; color: #798fb0; font-weight: bold; }
+h3 {
+     	font-size: 130%;
+     	color: #fe912a;
+     	font-weight: bold;
+}
+        
+/*  ------------------------------------------
+/*  Disposition a l'ecran des blocs principaux
+/*  ------------------------------------------ */
+#page {
+	width: 48em;
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#conteneur { width: 100%; }
+
+#conteneur #contenu {
+	float: left;
+	width: 33em;
+}
+
+#conteneur #navigation {
+	float: right;
+	width: 12em;
+}
+
+/* Blocs du contenu (c-a-d. la colonne principale) */
+#contenu .contre-encart {
+	float: left;
+	width: 21em;
+}
+
+#contenu .encart {
+	float: right;
+	width: 11em;
+	margin: 0;
+	margin-bottom: 1em;
+}
+
+/* Entete */
+#entete {
+		padding: 1em .8em .4em 1em;
+		background: url(images/pixel_bleu.png) repeat; }
+#entete a.accueil { display: block; width: 100%; margin-top: 2em; padding-bottom: 3em; }
+#entete a.accueil img.spip_logos { vertical-align: bottom; line-height: 1em; }
+#entete a.accueil #nom_site_spip { vertical-align: bottom; font-size: 3.5em; font-family: Georgia, Times, serif; font-weight: normal; }
+#entete .formulaire_menu_lang { position: absolute; right: 0; top: 0.90em; display: block; width: 30%; } /*Cf.: spip_formulaires.css*/
+
+/* Fil d'Ariane */
+#hierarchie {
+	clear: both;
+	margin-bottom: 2em;
+	font-size: 0.77em; }
+
+/* Pied de page */
+#pied {
+		clear: both;
+		height: 20px;
+		margin-top: 1em;
+		padding: 1em;
+		background: url(images/pixel_bleu.png) repeat; }
+#pied small { font-size: 0.77em; }
+#pied img { vertical-align: bottom; }
+
+/* Espaceur de blocs */
+.nettoyeur { clear: both; margin: 0; padding: 0; border: none; height: 0; line-height: 1px; font-size: 1px; }
+
+/* Non visible a l'ecran */
+.invisible { position: absolute; top: -3000em; height: 1%; }
+
+li { list-style: none; }
+
+/*  ------------------------------------------
+/*  Typographie generale du site
+/*  ------------------------------------------ */
+
+/* Typo pour les menus et la navigation */
+body, #navigation, .encart, .formulaire_spip {
+	font-family: Verdana, Tahoma, Arial, sans-serif; }
+
+/* Typo pour le contenu */
+#contenu {
+	font-family: "Trebuchet MS", Helvetica, sans-serif; }
+
+/* Typo pour les citations et extraits introductifs */
+q, blockquote, .liste-articles li .texte, h3.spip, .voirskel {
+	font-family: Georgia, Times, serif; }
+	
+
+.titre {
+		font: 1.4em/1em Verdana, Arial, Helvetica, sans-serif; 
+		font-weight: bold;
+		line-height: 1.6em;
+		margin: 1em 0 0 0;
+		color: #666666;
+}
+
+
+.stitre {
+		font: 1em/1em Verdana, Arial, Helvetica, sans-serif; 
+		font-weight: bold;
+		padding-left: 0.2em;
+		line-height: 1.6em;
+		margin: 1em 0 .5em 0;
+}
+
+.stitre a {
+		text-decoration: none;
+		border-bottom: 1px dotted;
+}
+
+#contenu li {
+     	margin: 1em;
+}
+
+p, .texte {
+		margin: 0.5em 0 0.5em 0;
+		font-size: 105%;
+		line-height: 1.6em;
+}
+
+b {
+     	font-size: 125%;
+     	color: #fe912a;
+}
+
+.spip {
+     
+}
+
+
+
+.petit  {
+ 		font-size: 105%;  
+		padding: .5em 0 0 0;
+}
+
+p strong {
+     	color: #000;
+      	font-weight: bold;
+}
+
+
+.deco_menu2 a { 
+		margin: 2em; 
+		padding: 0 .5em .5em .5em; 
+		color: #fe912a; 
+}
+
+.deco_menu a,
+.box_contact a {
+		border-bottom: none;
+		font: 1.3em/1em Verdana, Arial, Helvetica, sans-serif; 
+		color: #FFF;
+}
+
+
+.form_home a {
+		color: #666666;
+}	
+
+
+/*  ------------------------------------------
+/*  Habillage des menus et de la navigation
+/*  ------------------------------------------ */
+
+div.contenu_sommaire {
+		width: 65%;
+     	height: 100%;
+		margin: 0 10px 0 110px;
+		padding: 3em;
+		display: block;
+		font: 1.1em/1em Verdana, Arial, Helvetica, sans-serif; 
+		clear: both;
+}
+
+div.contenu {
+     	width: 100%;
+		margin: 0;
+		padding: 0;
+		display: block;
+		font: 1.1em/1em Verdana, Arial, Helvetica, sans-serif; 
+
+}
+
+div.contenu_sommaire {
+		background: url(images/fleche_ombre_ok.png) 1em 4em no-repeat;
+}
+
+div.contenu img {
+		padding-right: 1em;
+
+}
+
+div#contenu {
+        width: 100%;
+        margin: 0 0 10px 0;
+}
+
+div#contenu_article {
+		float: right;
+		width: 75%;
+		margin: 8px 5px 10px 0;
+		padding: 0 5px 0 5px;
+}
+
+div#menu {
+		width: 16.98em;	
+		margin: 0;
+		padding: 0;
+		border: solid #FFF 1px;
+}
+
+.deco_menu {
+	 	padding: .8em;
+		text-align: right;
+		background: url(images/pixel_bleu.png) repeat;
+		border-top: #FFF solid 1px;
+}
+
+.deco_menu:hover {
+	 	padding: .8em;
+		text-align: right;
+		background: url(images/pixel_gris.png) repeat;
+}
+
+/*  Habillage general des menus de navigation
+---------------------------------------------- */
+.rubriques, .breves, .syndic, .forums, .divers {
+	min-width: 10em;
+	border: 1px solid #CCC;
+	margin-bottom: 1em;
+	font-size: 0.77em;
+}
+
+
+
+/*  Des couleurs specifiques selon les types de menus
+---------------------------------------------- */
+.rubriques { background: #EAFFEA;}
+.rubriques .menu-titre { background: #F2FFF2; }
+
+.breves { background: #FFEAEA; }
+.breves .menu-titre { background: #FFF2F2; }
+
+.syndic { background: #E8F8F8; }
+.syndic .menu-titre { background: #F0FCFC; }
+
+.forums { background: #EAEAFF; }
+.forums .menu-titre { background: #F2F2FF; }
+
+.divers { background: #F8F8E8; }
+.divers .menu-titre { background: #FCFCF0; }
+
+/*  ------------------------------------------
+/*  Habillage du contenu
+/*  ------------------------------------------ */
+
+/*  Cartouche et titraille
+---------------------------------------------- */
+.cartouche { margin-bottom: 2em; }
+
+.cartouche .titre {
+	font-size: 1.27em;
+	font-weight: bold;
+	color: #000; }
+#contenu .surtitre, #contenu .soustitre { font-size: 0.82em; }
+
+.cartouche .spip_logos {
+	float: right;
+	margin-left: 16px;
+	margin-bottom: 16px; }
+
+.cartouche p { margin: 0; padding: 0; clear: left; }
+.cartouche small { font-size: 0.71em; }
+
+.cartouche .traductions { font-size: 0.71em; }
+.cartouche .traductions * { display: inline; }
+.cartouche .traductions li { padding-left: 1em; }
+
+
+/*  Mise en forme des textes du contenu
+---------------------------------------------- */
+.chapo {
+	margin-bottom: 1.5em;
+	font-weight: bold;
+	line-height: 1.4em; }
+
+.lien {
+	background: #EEE;
+	margin: 1em;
+	margin-bottom: 1.5em;
+	padding: 0.82em;
+	border: 1px solid #CCC;
+	font-size: 0.82em;
+	font-weight: bold; }
+
+.texte { color: #000; font-size: 0.96em; }
+
+.ps, .notes {
+	margin-top: 1.4em;
+	padding-top: 2px;
+	border-top: 2px solid #CCC; }
+.ps { font-size: 0.82em; }
+.notes { clear: both; font-size: 0.77em; }
+.ps h2, .notes h2 { font-size: 1.19em; font-weight: bold; }
+
+/*  Portfolio
+---------------------------------------------- */
+#documents_portfolio {
+	clear: both;
+	margin-top: 1.4em;
+	padding-top: 2px;
+	border-top: 2px solid #CCC; }
+#documents_portfolio h2 { margin-bottom: 0.4em; font-size: 0.88em; font-weight: bold; }
+
+#document_actif { margin-top: 1em; }
+
+/*  Listes de documents joints (a un article ou une rubrique)
+---------------------------------------------- */
+#documents_joints {
+	margin-top: 1.4em;
+	padding-top: 2px;
+	border-top: 2px solid #CCC; }
+#documents_joints h2 { margin-bottom: 0.4em; font-size: 0.88em; font-weight: bold; }
+#documents_joints ul { margin: 0; padding: 0; list-style: none; }
+#documents_joints li { margin-bottom: 0.4em; }
+#documents_joints li .spip_doc_titre {}
+#documents_joints li .spip_doc_titre small { font-weight: normal; }
+.spip_doc_descriptif { visibility: hidden; display:none; }
+
+.pagination { font-size: 0.90em; }
+
+/*  ------------------------------------------
+/*  Habillage specifique du plan du site
+/*  ------------------------------------------ */
+
+.page_plan .cartouche { display: none; }
+
+.page_plan #contenu h2 {
+	clear: both;
+	background: #EEE;
+	border: 1px solid #CCC;
+	padding: 0.5em;
+	margin-bottom: 1em;
+	font-weight: bold;
+	text-align: center; }
+
+.page_plan #contenu .contre-encart ul {
+	display: block;
+	clear: left;
+	margin-top: 0;
+	margin-bottom: 1em;
+	padding-top: 0; }
+.page_plan #contenu .contre-encart li {}
+
+/*  ------------------------------------------
+/*  Habillage des formulaires
+/*  ------------------------------------------ */
+
+.formulaire_spip { text-align: left; font-size: 0.77em; }
+.formulaire_spip p { margin: 0.5em 0; padding: 0; }
+
+.formulaire_spip fieldset {}
+.formulaire_spip legend {}
+
+.formulaire_spip label {}
+.formulaire_spip .forml { width: 99%; font-family: inherit; font-size: inherit; }
+
+/* Boutons */
+.spip_bouton { text-align: right; }
+.spip_bouton input { float: right; }
+
+/* Reponse du formulaire */
+.reponse_formulaire { font-weight: bold; color: #e86519; }
+fieldset.reponse_formulaire { border-color: #e86519; font-weight: normal; }
+
+/* Previsualisation du message */
+fieldset.previsu { padding: 1em; }
+
+/* Formulaire de login au forum */
+.formulaire_login_forum .forml { width: 12em; }
+.formulaire_login_forum .spip_logos { float: right; padding-left: 10px; }
+
+/* Choix des mots-clefs */
+ul.choix_mots { float: left; width: 47%; margin: 0; padding: 0; list-style: none; } 
+ul.choix_mots label { display: inline; }
+
+/* Formulaire de recherche */
+.formulaire_recherche { width: 12em; text-align: left; }
+.formulaire_recherche label { display: none; }
+
+input, select, textarea{
+	    font-size: 120% !important;
+	    font-size: 140%;
+	    width: 65%;
+} 
+
+input[type="submit"] {
+		text-align: center;
+        padding: .2em;
+        width: 25%;
+		color: #000000;
+		background-color: #FFFFFF;
+}
+
+.spacer {
+	clear: both;
+}
+
+	
+.form_home { padding: .2em .2em .2em 3em !important; padding: .2em .2em .2em 1.8em; }
+.label { padding: .2em; }
+.champs { padding: .2em; }
+
+
+blockquote {
+		font: .9em/1em Georgia, "times new roman", serif;
+		font-style: italic;
+		background: #f8f8f8 url(../images/quote.gif) no-repeat 10px 10px;
+		margin: 2em;
+		padding: 2em 2em 2em 8em;
+}
+
+/*  ------------------------------------------
+/*  Habillage des forums
+/*  ------------------------------------------ */
+
+.forum-repondre, .forum-decompte {
+	clear: both;
+	margin-top: 2.5em;
+	padding-top: 2px;
+	border-top: 2px solid #CCC;
+	font-size: 0.88em;
+	font-weight: bold; }
+
+/*  ------------------------------------------
+/*  Couleurs des liens
+/*  ------------------------------------------ */
+a { text-decoration: none; color: #333; }
+a .on { font-style: bold; }
+a:hover { text-decoration: underline; }

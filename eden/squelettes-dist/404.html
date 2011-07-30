@@ -1,0 +1,47 @@
+#CACHE{7200}
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="#LANG_DIR" lang="#LANG">
+<head>
+<title>[(#NOM_SITE_SPIP|textebrut)] - Comment r&eacute;duire vos co&ucirc;ts d'impression</title>
+[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|textebrut)" />]
+<INCLURE{fond=inc-head}>
+
+</head>
+<body>
+
+<div id="enveloppe">
+
+<div id="evitement">
+	<a href="#navigateur" title="Aller au contenu" accesskey="S"  class="invisible">Aller au contenu</a>
+</div>		
+
+	[(#REM) Entete de la page + titre du site ]
+	<INCLURE{fond=inc-entete}>
+
+<div id="contenu">
+
+<div class="contenu_sommaire">
+
+<h2><b>Page non trouv&eacute;e</b></h2>
+<p class="spip">La page du site n'a pas &eacute;t&eacute; trouv&eacute;e.</p>
+
+</div> <!-- contenu -->
+
+<div id="menu">
+
+<ul>
+<BOUCLE_lien(RUBRIQUES) {id_rubrique} {par num titre} >
+<li class="deco_menu"><a href="#URL_RUBRIQUE" title="[(#TITRE|supprimer_numero)]">[(#TITRE|supprimer_numero)]</a></li>
+</BOUCLE_lien>
+</ul>
+
+
+</div> <!-- menu -->
+
+	[(#REM) Pied de la page ]
+	<INCLURE{fond=inc-pied}>
+
+</div> <!-- enveloppe -->
+
+</body>
+</html>

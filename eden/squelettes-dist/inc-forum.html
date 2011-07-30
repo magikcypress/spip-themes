@@ -1,0 +1,56 @@
+[(#PARAMETRES_FORUM|?) Cette balise (invisible) provoque le recalcul du forum la premiere fois qu'un message est poste (cf. inc/invalideur). ]
+
+[(#REM) Nombre total de messages ]
+<BOUCLE_decompte(FORUMS) {id_rubrique ?}{id_article ?}{id_breve ?}{id_syndic ?} {plat}></BOUCLE_decompte>[<h2 class="forum-decompte">(#TOTAL_BOUCLE|>{0}|?{#TOTAL_BOUCLE,''})
+[(#TOTAL_BOUCLE|=={1}|?{<:message:>,<:messages_forum:>})]</h2>]<//B_decompte>
+
+[(#REM) Messages du forum ]
+<B_forums>
+<ul class="forum">
+
+	<BOUCLE_forums(FORUMS) {id_rubrique ?}{id_article ?}{id_breve ?}{id_syndic ?} {par date}>
+
+	<li class="forum-fil">
+
+		<div class="forum-message">
+			<div class="forum-chapo">
+				<h3 class="#EDIT{titre} forum-titre"><a href="#forum#ID_FORUM" name="forum#ID_FORUM" id="forum#ID_FORUM">#TITRE</a></h3>
+				<small>[(#DATE|affdate_jourcourt)][&nbsp;(#DATE|heures)][:(#DATE|minutes)][, <:par_auteur:> <span class="#EDIT{qui}">(#NOM|couper{80})</span>]</small>
+			</div>
+			<div class="#EDIT{texte} forum-texte">
+				[(#TEXTE|lignes_longues)]
+				[<p class="#EDIT{hyperlien} forum-lien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+				[<p class="forum-repondre-message"><a href="(#PARAMETRES_FORUM|url_reponse_forum)"><:repondre_message:></a></p>]
+			</div>
+		</div>
+
+		<B_forums_fils>
+		<ul>
+			<BOUCLE_forums_fils(FORUMS){id_parent}{par date}>
+
+			<li>
+				<div class="forum-message">
+					<div class="forum-chapo">
+						<strong class="#EDIT{titre} forum-titre"><a href="#forum#ID_FORUM" name="forum#ID_FORUM" id="forum#ID_FORUM">#TITRE</a></strong>
+						<small>[(#DATE|affdate_jourcourt)][&nbsp;(#DATE|heures)][:(#DATE|minutes)][, <:par_auteur:> <span class="#EDIT{qui}">(#NOM|couper{80})</span>]</small>
+					</div>
+					<div class="#EDIT{texte} forum-texte">
+						[(#TEXTE|lignes_longues)]
+						[<p class="#EDIT{hyperlien} forum-lien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+						[<p class="forum-repondre-message"><a href="(#PARAMETRES_FORUM|url_reponse_forum)"><:repondre_message:></a></p>]
+					</div>
+				</div>
+
+				<BOUCLE_Forums_Boucle(boucle_forums_fils)></BOUCLE_Forums_Boucle>
+
+			</li>
+
+			</BOUCLE_forums_fils>
+		</ul>
+		</B_forums_fils>
+
+	</li>
+	</BOUCLE_forums>
+
+</ul>
+</B_forums>
