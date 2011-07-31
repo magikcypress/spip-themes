@@ -1,0 +1,92 @@
+[(#REM)
+	Un cache plus court, pour la boucle syndic_articles
+]#CACHE{3600}
+<!DOCTYPE html>
+<html lang="#LANG" dir="#LANG_DIR">
+<head>
+<title>[(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|textebrut)">]
+<INCLURE{fond=inc-head}>
+</head>
+
+<body>
+<div id="background">
+	<div class="container">
+	
+	<header id="header">
+		[(#REM) Entete de la page + titre du site ]
+		<INCLURE{fond=inc-entete}>
+	</header>
+
+	[(#REM) Contenu principal : derniers articles publies ]
+	<section class="span-16 colborder">
+
+        <INCLURE{fond=modeles/liste_derniers_articles}{env}{ajax}>
+        <hr />
+
+		[(#REM) Tags ]
+		<B_tags>
+		<div class="span-9 colborder">
+			<h3>Tag's</h3>
+			<ul class="tags">
+				<BOUCLE_tags(GROUPES_MOTS){par titre}>
+                                <BOUCLE_mots(MOTS){id_groupe}{par titre}>
+				<li><a href="#URL_MOT"[ title="(#URL_MOT|attribut_html|couper{80})"]>#TITRE</a>
+                                    #DESCRIPTIF</li>
+                                </BOUCLE_mots>
+				</BOUCLE_tags>
+			</ul>
+		</div>
+		</B_tags>
+
+		[(#REM) Liens des forums ]
+		<B_forums_liens>
+		<div class="span-5 code last">
+			<h3><:derniers_commentaires:></h3>
+			<ul>
+				<BOUCLE_forums_liens(FORUMS) {plat} {par date}{inverse} {0,4}>
+				<li>[(#DATE|affdate_jourcourt) &ndash; ]<a href="#URL_FORUM"[ title="(#TITRE|attribut_html|couper{80})"]>[(#TEXTE|couper{80})]</a></li>
+				</BOUCLE_forums_liens>
+			</ul>
+		</div>
+		</B_forums_liens>
+
+	</section><!--.span-16-->
+	
+	[(#REM) Menu de navigation laterale ]
+	<nav class="span-7 last">
+		
+		[(#REM) Menu de navigation par rubriques ]
+		<INCLURE{fond=inc-rubriques}>
+		
+		#FORMULAIRE_RECHERCHE
+
+		[(#REM) Sur le Web ]
+		<B_syndic>
+                    <div class="code">
+			<h3>Sur le web</h3>
+			<ul class="web">
+				<BOUCLE_syndic(SITES) {par hasard} {0,11}>
+				<li> &ndash; <a href="#URL_SITE"[ title="(#URL_SITE|attribut_html|couper{80})"] class="spip_out">#NOM_SITE</a></li>
+				</BOUCLE_syndic>
+			</ul>
+                    </div>
+		</B_syndic>
+
+	[(#REM) Menu de navigation laterale ]
+	<div id="extra">
+		
+		[(#REM) Inscription au site ]
+		#FORMULAIRE_INSCRIPTION
+		
+	</div><!--#extra-->
+
+    </nav><!--.span-7-->
+	
+	[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+	
+	</div><!--#container-->
+</div><!--#background-->
+</body>
+</html>
